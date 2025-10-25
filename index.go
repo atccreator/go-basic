@@ -63,10 +63,14 @@ func loopExample(){
 	count := 10
 
 	for count > 0 {
+		if count == 5 {
+			count--
+			continue
+		}
 		fmt.Println("Count:", count)
 		count--
 	}
-	
+
 	// Infinite loop example
 	for {
 		fmt.Println("Infinite Loop Example - Breaking after one iteration")
