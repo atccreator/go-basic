@@ -60,7 +60,6 @@ func loopExample(){
 	}
 
 	// writing while loop using for
-
 	count := 10
 
 	for count > 0 {
