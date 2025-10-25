@@ -66,6 +66,12 @@ func loopExample(){
 		fmt.Println("Count:", count)
 		count--
 	}
+	
+	// Infinite loop example
+	for {
+		fmt.Println("Infinite Loop Example - Breaking after one iteration")
+		break
+	}
 }
 
 
