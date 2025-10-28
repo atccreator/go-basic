@@ -137,7 +137,7 @@ func UserInputExample(){
 	fmt.Scanln(&age) // reads until the newline character.
 	fmt.Println("You are", age, "years old.")
 
-	Scanf example
+	// Scanf example
 	var name1 string
 	var age1 int
 	fmt.Print("Enter your name and age: ")
@@ -153,13 +153,30 @@ func UserInputExample(){
 
 }
 
+func Insertionsort(arr []int) []int {
+	n := len(arr)
+	for i := 1; i < n; i++ {
+		key := arr[i]
+		j := i - 1
+		for j >= 0 && arr[j] > key {
+			arr[j+1] = arr[j]
+			j--
+		}
+		arr[j+1] = key
+	}
+	return arr
+}
+
 
 func main() {
 	// ArrayExample()
 	// fun()
 	// variableDeclarationExample()
 	// Sum(5, 10)
-	UserInputExample()
+	// UserInputExample()
+	arr := []int{12, 11, 13, 5, 6}
+	sortedArr := Insertionsort(arr)
+	fmt.Println("Sorted array:", sortedArr)
 
 	// Demonstrating underflow behavior
 	var a uint8 = 0
