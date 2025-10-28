@@ -168,15 +168,38 @@ func Insertionsort(arr []int) []int {
 }
 
 
+func MapExample(){
+	// Map is a collection of key-value pairs just like dictionary in python and object in javascript and hashmap in java
+	
+	// declaration of map key is string and value is int
+	studentGrades := map[string]int{
+		"Alice": 85,
+		"Bob": 90,
+		"Charlie": 78,
+	}
+
+	// Only declaration of map
+	var employeeSalaries map[string]float64
+	employeeSalaries = make(map[string]float64) // initializing map using make function
+
+	fmt.Println("Student Grades:", studentGrades)
+
+	// iterating over map
+	for student, grade := range studentGrades {
+		fmt.Printf("%s: %d\n", student, grade)
+	}
+}
+
 func main() {
 	// ArrayExample()
 	// fun()
 	// variableDeclarationExample()
 	// Sum(5, 10)
 	// UserInputExample()
-	arr := []int{12, 11, 13, 5, 6}
-	sortedArr := Insertionsort(arr)
-	fmt.Println("Sorted array:", sortedArr)
+	// arr := []int{12, 11, 13, 5, 6}
+	// sortedArr := Insertionsort(arr)
+	// fmt.Println("Sorted array:", sortedArr)
+	MapExample()
 
 	// Demonstrating underflow behavior
 	var a uint8 = 0
