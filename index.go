@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+	"bufio"
+	"strings"
+)
 
 func fun(){
 	fmt.Println("Inside Fun: Hello, Mr. Go!");
@@ -78,11 +83,85 @@ func loopExample(){
 	}
 }
 
+func ArrayExample(){
+
+	// Dynamic array are called slices in Go
+
+	var arr []int // declaration of empty integer array
+	arr = append(arr, 10) // appending value to array
+	arr = append(arr, 20, 30, 40) // appending multiple values to array
+	fmt.Println("Array Elements of arr:", arr)
+
+	var strArr = []string{"Go", "Python", "Java"} // declaration and initialization of string array
+	fmt.Println("String Array Elements of strArr:", strArr)
+
+	var arr2 []int
+	fmt.Println("Length of arr2 before appending:", len(arr2))
+	fmt.Println("Capacity of arr2 before appending:", cap(arr2)) // cap method gives the capacity of the array
+	fmt.Println("Empity Array arr2:", arr2)
+
+	// Create a slice with length 2 and capacity 5
+	s := make([]int, 2, 5)
+	fmt.Printf("Slice: %v, Length: %d, Capacity: %d\n", s, len(s), cap(s))
+
+	s = append(s, 10, 20) // Append two elements
+	fmt.Printf("Slice: %v, Length: %d, Capacity: %d\n", s, len(s), cap(s))
+
+	s = append(s, 30) // Append another element, exceeding original capacity
+	fmt.Printf("Slice: %v, Length: %d, Capacity: %d\n", s, len(s), cap(s))
+
+
+	// Different way of defining array with fixed size
+	var fixedArr [3]int = [3]int{1, 2, 3} // with explicit type declaration
+	fmt.Println("Fixed Size Array Elements of fixedArr:", fixedArr)
+	var fixedArr2 = [5]string{"A", "B", "C", "D", "E"} // type inference implicitly
+	fmt.Println("Fixed Size Array Elements of fixedArr2:", fixedArr2)
+	var fixedArr3 [4]float64 // declaration of fixed size array
+	fixedArr3[0] = 1.1
+	fixedArr3[1] = 2.2
+	fixedArr3[2] = 3.3
+	fixedArr3[3] = 4.4
+	fmt.Println("Fixed Size Array Elements of fixedArr3:", fixedArr3)
+
+}
+
+func UserInputExample(){
+	var name string
+	fmt.Print("Enter your name: ")
+	fmt.Scan(&name) // reads until the first space or newline.
+	fmt.Println("Hello,", name)
+
+	// Scanln example
+	var age int
+	fmt.Print("Enter your age: ")
+	fmt.Scanln(&age) // reads until the newline character.
+	fmt.Println("You are", age, "years old.")
+
+	Scanf example
+	var name1 string
+	var age1 int
+	fmt.Print("Enter your name and age: ")
+	fmt.Scanf("%s %d", &name1, &age1) // reads formatted input
+	fmt.Println("Name:", name1, "| Age:", age1)
+
+	// Using bufio for reading a full line including spaces
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Enter your full name: ")
+	fullName, _ := reader.ReadString('\n')
+	fullName = strings.TrimSpace(fullName)
+	fmt.Println("Full Name:", fullName)
+
+}
+
 
 func main() {
-	fun()
-	variableDeclarationExample()
+	// ArrayExample()
+	// fun()
+	// variableDeclarationExample()
 	// Sum(5, 10)
+	UserInputExample()
+
+	// Demonstrating underflow behavior
 	var a uint8 = 0
 	var b int8 = 0
 	b--
