@@ -123,6 +123,10 @@ func ArrayExample(){
 	fixedArr3[3] = 4.4
 	fmt.Println("Fixed Size Array Elements of fixedArr3:", fixedArr3)
 
+	for i ,val := range fixedArr3 {
+		fmt.Printf("Index: %d, Value: %.2f\n", i, val)
+	}
+
 }
 
 func UserInputExample(){
@@ -178,16 +182,94 @@ func MapExample(){
 		"Charlie": 78,
 	}
 
-	// Only declaration of map
-	var employeeSalaries map[string]float64
-	employeeSalaries = make(map[string]float64) // initializing map using make function
-
 	fmt.Println("Student Grades:", studentGrades)
 
 	// iterating over map
 	for student, grade := range studentGrades {
 		fmt.Printf("%s: %d\n", student, grade)
 	}
+
+	// Only declaration of map
+	employeeSalaries := make(map[string]float64) // initializing map using make function, make is used to create slices, maps, and channels and it is built-in function in Go
+
+	// adding key-value pairs to map
+	employeeSalaries["John"] = 50000.50
+	employeeSalaries["Jane"] = 60000.75
+
+	fmt.Println("Employee Salaries:", employeeSalaries)
+
+	// accessing value using key
+	johnSalary := employeeSalaries["John"]
+	fmt.Println("John's Salary:", johnSalary)
+
+	// deleting key-value pair from map
+	delete(employeeSalaries, "Jane")
+	fmt.Println("Employee Salaries after deletion:", employeeSalaries)
+
+	// checking if a key exists
+	salary, exists := employeeSalaries["Jane"]
+	if exists {
+		fmt.Println("Jane's Salary:", salary)
+	} else {
+		fmt.Println("Jane's record not found.")
+	}
+
+	// declaring empty map
+	customMAP := map[string]string{}
+	fmt.Println("Empty Custom Map:", customMAP)
+
+	customMAP["Language"] = "Go"
+	customMAP["Version"] = "1.18"
+	customMAP["Author"] = "Google"
+	customMAP["License"] = "BSD"
+	for key, value := range customMAP {
+		fmt.Println(key, ":", value)
+	}
+
+	
+}
+
+// intersting odd and even example
+func oddEvenExample(num int) (string, int) {
+	if num%2 == 0 {
+		return "Even", 0
+	}else{
+		return "Odd", 1
+	}
+}
+
+// Demosnstrating pointer 
+func pointerExample(){
+	var x int = 10
+	var p *int = &x // p is a pointer that holds the address of x
+	var y **int = &p // y is a pointer to pointer that holds the address of p
+	var z int = **y
+	fmt.Println("Value of x:", x)
+	fmt.Println("Address of x:", &x)
+	fmt.Println("Value of p (Address of x):", p)
+	fmt.Println("Value pointed by p (Value of x):", *p)
+	fmt.Println("Value of y (Address of p):", y)
+	fmt.Println("Value pointed by y (Value of p):", *y)
+	fmt.Println("Value pointed by pointer to pointer y (Value of x):", **y)
+	fmt.Println("Value of z (Value of x):", z)
+}
+
+// More complex pointer example using array of pointers and struct pointers
+func complexPointerExample(){
+	type Person struct {
+		Name string
+		Age  int
+	}
+
+	alice := Person{Name: "Alice", Age: 30}
+	bob := Person{Name: "Bob", Age: 25}
+
+	people := []Person{alice, bob}
+	var p *Person = &people[0] // pointer to the first element
+	var q **Person = &p        // pointer to pointer
+
+	fmt.Println("Name:", (*q).Name) // output: Name: Alice
+	fmt.Println("Age:", (*q).Age) // output: Age: 30
 }
 
 func main() {
@@ -199,14 +281,18 @@ func main() {
 	// arr := []int{12, 11, 13, 5, 6}
 	// sortedArr := Insertionsort(arr)
 	// fmt.Println("Sorted array:", sortedArr)
-	MapExample()
+	// MapExample()
+	// val1, val2 := oddEvenExample(7)
+	// fmt.Println("Odd/Even Check:", val1, "| Value:", val2)
+	// pointerExample()
+	complexPointerExample()
 
 	// Demonstrating underflow behavior
 	var a uint8 = 0
 	var b int8 = 0
 	b--
 	a--
-	fmt.Println("Value of a:", a)
-	fmt.Println("Value of b:", b)
+	// fmt.Println("Value of a:", a)
+	// fmt.Println("Value of b:", b)
 }
 
