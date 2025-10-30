@@ -272,6 +272,7 @@ func complexPointerExample(){
 	fmt.Println("Age:", (*q).Age) // output: Age: 30
 }
 
+
 func main() {
 	// ArrayExample()
 	// fun()
